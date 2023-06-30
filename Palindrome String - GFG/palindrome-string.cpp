@@ -10,13 +10,23 @@ class Solution{
 public:	
 	
 	
-	int isPalindrome(string S)
+	int isPalindrome(string s)
 	{
-	    int n = S.length();
-	    for(int i =0; i<n/2;++i)
-	        if(S[i]!= S[n-i-1])
-	            return 0;
-	    return 1;
+	     int left = 0, right = s.length()-1;
+        while(left<right)
+        {
+            if(!isalnum(s[left])) 
+                left++;
+            else if(!isalnum(s[right])) 
+                right--;
+            else if(tolower(s[left])!=tolower(s[right])) 
+                return 0;
+            else {
+                left++; 
+                right--;
+            }
+        }
+        return 1;
 	}
 
 };
